@@ -1,6 +1,7 @@
 package tech.pedrolima.arquiteturaspring.montadora.api;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +18,7 @@ public class TesteFabricaController {
     // Eu criei um Bean na classe MontadoraConfiguration, onde eu defino um objeto, o qual eu posso usar via injeção de dependencia
     // em outras classe, como por exemplo nessa que vou aplicar isso - A injeção de dependencia, evita de eu ficar criando objetos com new toda hora
     @Autowired
+    @Qualifier("motor")
     private Motor motor;
 
     // Só lembrando que o @RequestBody, faz com que eu passe os valores via JSON (Como o exemplo que ta no Postman)
