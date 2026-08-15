@@ -1,6 +1,8 @@
 package tech.pedrolima.arquiteturaspring.todos;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 @RestController
 @RequestMapping("todos")
@@ -16,7 +18,12 @@ public class TodoController  {
     // Recebo um objeto do tipo TodoEntity via corpo da requisição e salvo
     @PostMapping
     public TodoEntity salvar(@RequestBody TodoEntity todo){
-        return this.service.salvar(todo);
+        try{
+            return this.service.salvar(todo);
+        }catch (IllegalAccessError e){
+            var mensagemErro = e.getMessage();
+            throw  new ResponseStatusException(HttpStatus.CONFLICT);
+        }
     }
 
     // Aqui eu recebo o PathVariable que é para fazer o filtro com o id (Passado pelo endpoint) e recebo pelo Json via corpo da requisição com o RequestBody
