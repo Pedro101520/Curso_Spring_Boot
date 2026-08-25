@@ -32,7 +32,8 @@ public class Autor {
     private String nacionalidade;
 
     // A tabela de Autor não tem essa coluna, mas eu defini aqui o relacionamento entre o autor e livro, apenas para facilitar o acessos das informações entre autor e livro
-    @OneToMany(mappedBy = "autor")
+//    @OneToMany(mappedBy = "autor")
+    @Transient
     private List<Livro> livros;
 
     // Aqui vou definir os construtores, mas vou precisar definir um vazio para uso exclusivo do Framework
