@@ -36,7 +36,8 @@ public class Livro {
     private BigDecimal preco;
 
     // Definindo o relacionamento entre tabelas
-    @ManyToOne
+    // O cascade é pouco usado
+    @ManyToOne // (cascade = CascadeType.ALL)
     @JoinColumn(name = "id_autor")
     private Autor autor;
 
