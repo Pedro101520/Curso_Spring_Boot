@@ -3,6 +3,7 @@ package tech.pedrolima.libraryapi.model;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -14,6 +15,7 @@ import java.util.UUID;
 // Uma coisa bem legal, com a dependencia lombok que eu coloquei no pom, agora eu posso colocar as anotações abaixo que ele cria os getters e setters dos atributos da entidade em tempo de compilação
 @Getter
 @Setter
+@ToString
 public class Autor {
     @Id
     @Column(name = "id")
