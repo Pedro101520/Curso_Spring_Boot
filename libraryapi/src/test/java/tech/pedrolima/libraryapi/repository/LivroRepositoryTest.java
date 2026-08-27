@@ -9,6 +9,7 @@ import tech.pedrolima.libraryapi.model.Livro;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.List;
 import java.util.UUID;
 
 @SpringBootTest
@@ -30,7 +31,7 @@ class LivroRepositoryTest {
         livro.setPreco(BigDecimal.valueOf(100));
         // Lembrando que eu defini na entidade essa coluna com o tipo de enum
         livro.setGenero(GeneroLivro.FICCAO);
-        livro.setTitulo("UFO");
+        livro.setTitulo("Alegria");
         livro.setDataPublicacao(LocalDate.of(1980, 1, 2));
 
         // Aqui é onde eu faço a busca do objeto autor para passar no relacionamento
@@ -97,6 +98,22 @@ class LivroRepositoryTest {
 
         System.out.println("Autor:");
         System.out.println(livro.getAutor().getNome());
+    }
+
+    // Eu criei um novo metodo la na classe do repositório do livro, ai eu vou sar aqui
+    @Test
+    void pesquisarPorTituloTest(){
+        // Isso significa que vai me retornar todas as ocorrências que tiverem esse titulo
+        List<Livro> lista = repository.findByTitulo("UFO");
+        lista.forEach(System.out::println);
+    }
+
+    // Como eu escrevi no Repositório do livro, tem como fazer uma consulta usando mais de um parâmetro, e no método abaixo vou aplicar isso
+    @Test
+    void pesquisarPorTituloEPrecoTest(){
+        var preco = BigDecimal.valueOf(100.00);
+        List<Livro> lista = repository.findByTituloAndPreco("UFO", preco);
+        lista.forEach(System.out::println);
     }
 
 
