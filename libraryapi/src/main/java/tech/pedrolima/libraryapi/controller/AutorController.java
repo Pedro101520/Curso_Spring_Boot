@@ -35,6 +35,7 @@ public class AutorController {
         Autor autorEntidade = autor.mapearParaAutor();
         service.salvar(autorEntidade);
 
+        // Isso aqui retorna um endpoint com o id do autor criado (Pesquisei, e entendi que não é algo obrigatório da arquitetura Rest)
         URI location = ServletUriComponentsBuilder
                 .fromCurrentRequest()
                 .path("/{id}")
